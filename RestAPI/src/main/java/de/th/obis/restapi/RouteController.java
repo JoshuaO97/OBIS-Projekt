@@ -7,11 +7,19 @@ import java.util.ArrayList;
 @RequestMapping("/routes")
 public class RouteController {
 
-    ArrayList<Route> routes = new ArrayList<>();
+    private ArrayList<Route> routes = new ArrayList<>();
 
     @GetMapping
-    public ArrayList<Route> getRoutes() {
+    public ArrayList<Route> getAllRoutes() {
         return routes;
+    }
+
+    @GetMapping("/{nr}")
+    public Route getRoute(@PathVariable int nr) {
+        if (nr - 1 < 0 || nr - 1 > routes.size() - 1) {
+            throw new ArrayIndexOutOfBoundsException("Route ID does not exist");
+        }
+        return routes.get(nr - 1);
     }
 
 }
