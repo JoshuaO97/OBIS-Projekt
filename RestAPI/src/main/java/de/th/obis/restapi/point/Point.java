@@ -4,10 +4,12 @@ public class Point {
 
     private double latitude;
     private double longitude;
+    private int code;
 
-    public Point(double latitude, double longitude) {
+    public Point(double latitude, double longitude, int code) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.code = code;
     }
 
 
@@ -25,5 +27,13 @@ public class Point {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 }

@@ -6,22 +6,19 @@ import java.util.ArrayList;
 public class Route {
 
     private final int id;
-    private static int nextID = 1;
     private final String name;
-    private final double length;
+    private final int length;
     private final int ascent;
     private final int descent;
-    private final int numCaches;
     private final ArrayList<Point> caches;
 
 
-    public Route(String name, double length, int ascent, int descent, ArrayList<Point> caches) {
-        this.id = nextID++;
+    public Route(int id, String name, int length, int ascent, int descent, ArrayList<Point> caches) {
+        this.id = id;
         this.name = name;
         this.length = length;
         this.ascent = ascent;
         this.descent = descent;
-        this.numCaches = caches.size();
         this.caches = caches;
     }
 
@@ -34,7 +31,7 @@ public class Route {
         return name;
     }
 
-    public double getLength() {
+    public int getLength() {
         return length;
     }
 
@@ -44,10 +41,6 @@ public class Route {
 
     public double getDescent() {
         return descent;
-    }
-
-    public int getNumCaches() {
-        return numCaches;
     }
 
     public ArrayList<Point> getCaches() {
