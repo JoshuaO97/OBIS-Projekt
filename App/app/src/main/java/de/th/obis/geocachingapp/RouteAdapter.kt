@@ -1,6 +1,8 @@
 package de.th.obis.geocachingapp
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -10,7 +12,7 @@ import de.th.obis.geocachingapp.databinding.ItemRouteBinding
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
-class RouteAdapter : RecyclerView.Adapter<RouteAdapter.RouteViewHolder>() {
+class RouteAdapter(private var con: Context) : RecyclerView.Adapter<RouteAdapter.RouteViewHolder>() {
 
     inner class RouteViewHolder(val binding: ItemRouteBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -34,7 +36,7 @@ class RouteAdapter : RecyclerView.Adapter<RouteAdapter.RouteViewHolder>() {
         return routes.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RouteViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RouteViewHolder { // is called, when a new item becomes visible
         return RouteViewHolder(ItemRouteBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -47,7 +49,7 @@ class RouteAdapter : RecyclerView.Adapter<RouteAdapter.RouteViewHolder>() {
         holder.binding.apply {
             val route = routes[position]
 
-            tvTitle.text = route.name
+            tvName.text = route.name
 
             var length = route.length.toDouble()
             length = round(length / 1000, 1) // parse meters into km with 1 decimal point
@@ -55,6 +57,13 @@ class RouteAdapter : RecyclerView.Adapter<RouteAdapter.RouteViewHolder>() {
 
             val numCaches = route.caches.size
             tvNumCaches.text = "Anzahl Caches: $numCaches"
+
+            val sentRoute = Route(route.id, route.name, route.length, route.ascent, route.descent, route.caches)
+            root.setOnClickListener {
+                val routeIntent = Intent(con, OverviewActivity::class.java)
+                routeIntent.putExtra("EXTRA_ROUTE", sentRoute)
+                con.startActivity(routeIntent)
+            }
         }
     }
 
