@@ -58,10 +58,9 @@ class RouteAdapter(private var con: Context) : RecyclerView.Adapter<RouteAdapter
             val numCaches = route.caches.size
             tvNumCaches.text = "Anzahl Caches: $numCaches"
 
-            val sentRoute = Route(route.id, route.name, route.length, route.ascent, route.descent, route.caches)
             root.setOnClickListener {
                 val routeIntent = Intent(con, OverviewActivity::class.java)
-                routeIntent.putExtra("EXTRA_ROUTE", sentRoute)
+                routeIntent.putExtra("EXTRA_ROUTE", route)
                 con.startActivity(routeIntent)
             }
         }

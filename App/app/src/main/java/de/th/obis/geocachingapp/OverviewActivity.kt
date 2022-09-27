@@ -1,8 +1,9 @@
 package de.th.obis.geocachingapp
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import de.th.obis.geocachingapp.databinding.ActivityOverviewBinding
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -31,6 +32,12 @@ class OverviewActivity : AppCompatActivity() {
         binding.tvNumCaches.text = "Anzahl Caches: ${route.caches.size}"
 
         createMap(route)
+
+        binding.btnStart.setOnClickListener {
+            val routeIntent = Intent(this, PlayActivity::class.java)
+            routeIntent.putExtra("EXTRA_ROUTE_2", route)
+            this.startActivity(routeIntent)
+        }
     }
 
 
