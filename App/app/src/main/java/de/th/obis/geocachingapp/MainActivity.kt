@@ -9,13 +9,13 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.th.obis.geocachingapp.databinding.ActivityMainBinding
+import de.th.obis.geocachingapp.retrofit.RetrofitInstance
 import retrofit2.HttpException
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
     private lateinit var routeAdapter: RouteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

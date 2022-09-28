@@ -18,6 +18,7 @@ class PlayActivity : AppCompatActivity() {
     private var numCaches = 0
     private var curIndex = 0 // index of the current cache in list routes.caches
 
+
     @SuppressLint("MissingPermission", "VisibleForTests") // permissions are already requested in MainActivity.kt
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +63,7 @@ class PlayActivity : AppCompatActivity() {
         fusedLocationProviderClient = FusedLocationProviderClient(this)
 
         val locationRequest = LocationRequest.create().apply {
-            interval = 5000
+            interval = 4000
             fastestInterval = 2000
             priority = Priority.PRIORITY_HIGH_ACCURACY
         }

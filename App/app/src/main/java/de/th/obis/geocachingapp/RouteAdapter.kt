@@ -66,7 +66,6 @@ class RouteAdapter(private var con: Context) : RecyclerView.Adapter<RouteAdapter
         }
     }
 
-
     private fun round(value: Double, decimalPoints: Int): Double {
         val d = 10.0.pow(decimalPoints.toDouble())
         return ((value * d).roundToInt()) / d

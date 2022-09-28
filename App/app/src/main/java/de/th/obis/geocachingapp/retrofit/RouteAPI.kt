@@ -1,5 +1,6 @@
-package de.th.obis.geocachingapp
+package de.th.obis.geocachingapp.retrofit
 
+import de.th.obis.geocachingapp.Route
 import retrofit2.Response
 import retrofit2.http.GET
 

@@ -18,6 +18,7 @@ class OverviewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOverviewBinding
     private lateinit var map: MapView
 
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,6 @@ class OverviewActivity : AppCompatActivity() {
             this.startActivity(routeIntent)
         }
     }
-
 
     private fun round(value: Double, decimalPoints: Int): Double {
         val d = 10.0.pow(decimalPoints.toDouble())
