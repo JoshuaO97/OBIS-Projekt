@@ -12,7 +12,6 @@ public class Route {
     private final int descent;
     private final ArrayList<Point> caches;
 
-
     public Route(int id, String name, int length, int ascent, int descent, ArrayList<Point> caches) {
         this.id = id;
         this.name = name;

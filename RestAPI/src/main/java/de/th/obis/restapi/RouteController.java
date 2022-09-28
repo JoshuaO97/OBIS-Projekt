@@ -27,4 +27,14 @@ public class RouteController {
         }
         return routes.get(nr - 1);
     }
+
+    @PostMapping
+    public void addRoute(@RequestBody Route route) {
+        for (Route i : routes) {
+            if (i.getId() == route.getId()) {
+                throw new IllegalArgumentException("Route ID is already taken");
+            }
+        }
+        routes.add(route);
+    }
 }
